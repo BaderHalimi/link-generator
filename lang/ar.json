@@ -5,6 +5,13 @@
     "forget_password":"هل نسيت كلمة المرور",
     "remember_me":"تذكرني",
     "email":"البريد الإلكتروني",
+    "Email":"البريد الإلكتروني",
     "password":"كلمة المرور",
-    "login_to_your_account":"تسجيل الدخول إلى حسابك"
+    "Password":"كلمة المرور",
+    "Name":"الاسم",
+    "name":"الاسم",
+    "login_to_your_account":"تسجيل الدخول إلى حسابك",
+    "register":"تسجيل",
+    "confirm_Password":"تأكيد كمة المرور",
+    "already_registered?":"لديك حساب؟"
 }
