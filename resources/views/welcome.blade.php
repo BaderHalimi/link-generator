@@ -3,7 +3,7 @@
 
 
 <!-- ✅ البانر الرئيسي -->
-<section class="bg-orange-50 text-center sm:px-[5%] h-[70vh] flex">
+<section class="bg-orange-50 text-center sm:px-[5%] h-[70vh] flex items-center">
     <div class="container mx-auto px-6">
         <h2 class="text-4xl font-bold text-orange-600 mb-4">اختصر روابطك، وحقق أقصى تأثير!</h2>
         <p class="text-lg mb-6">أنشئ صفحة وسيطة جذابة، تابع الإحصائيات، واستخدم عداد الانتظار للتفاعل الأفضل.</p>
