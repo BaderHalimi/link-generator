@@ -2,9 +2,22 @@
 @section('layout')
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <div class="min-h-screen flex flex-col">
+        <!-- Navbar -->
         @livewire('front.header')
-        @yield('content')
+
+        <!-- Sidebar + Content -->
+        <div class="flex flex-1 bg-gray-100">
+            
+            @livewire('layout.aside')
+
+            <!-- Main Content -->
+            <div class="flex-1 p-4">
+                @yield('content')
+            </div>
+        </div>
     </div>
     @stack('scripts')
 </body>
