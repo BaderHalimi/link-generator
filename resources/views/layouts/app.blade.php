@@ -15,6 +15,8 @@
 
             <!-- Main Content -->
             <div class="flex-1 p-4">
+                @livewire("pages.dashboard.routing")
+
                 @yield('content')
             </div>
         </div>

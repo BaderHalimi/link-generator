@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('code')->unique()->nullable();
             $table->string('url')->nullable();
             $table->string('image')->nullable();
             $table->string('title')->nullable();

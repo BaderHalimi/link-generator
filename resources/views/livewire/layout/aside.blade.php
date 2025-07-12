@@ -68,10 +68,13 @@ $menuItems = [
         <p class="text-sm">جميع الحقوق محفوظة &copy; {{ date('Y') }}</p>
 </aside>
 
-@section('content')
+
+{{-- <div class="flex-1 p-4">
     @if ($currentRoute === 1)
         @livewire('pages.dashboard.overview')
+
     @elseif ($currentRoute === 2)
-    
+        @livewire('pages.dashboard.creat')
     @endif
-@endsection
+    
+</div> --}}
