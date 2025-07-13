@@ -2,3 +2,7 @@
 
 
 
+@section('content')
+@livewire("pages.dashboard.routing")
+
+@endsection

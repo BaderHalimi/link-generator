@@ -49,13 +49,17 @@ $menuItems = [
 <aside class="w-64 bg-orange-500 text-white flex flex-col h-screen shadow-xl">
 
     
-    <nav class="flex-1 flex flex-col py-4">
+    
+    <nav class="flex-1 flex flex-col py-4" x-data="{ step: @entangle('currentRoute') }">
         @foreach ($menuItems as $step => $data)
-        <a href="#" wire:click="load_page({{$step}})" 
-        style="background-color: {{ $currentRoute === $step ? '#ea580c ' : '' }}; color: white;"
+        <a 
+        href="{{ url()->current() }}?step={{ $step }}"
+        wire:navigate
 
-        class=" {{ $currentRoute === $step ? 'flex  items-center px-6 py-4  ' : 'flex bg-orange-500 items-center px-6 py-4 hover:bg-orange-600 transition-colors duration-200'}}"
->
+        class="{{ (request()->query('step', 1) == $step) ? 'bg-orange-600 text-white' : 'bg-orange-500 hover:bg-orange-600 text-white' }} flex items-center px-6 py-4 transition-colors duration-200"
+
+     >
+     
             <i class="{{ $data['icon'] }} text-xl mr-3"></i> 
             <div>
                 <span class="block font-semibold text-lg">{{ $data['title'] }}</span>
