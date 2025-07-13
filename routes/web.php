@@ -26,6 +26,12 @@ Route::view('profile', 'profile')
     Route::get('/landing/{code}', [PageLanding::class, 'index'])->name('landing');
     Route::get('/landing/{code}/go2', [PageLanding::class, 'go2'])->name('landing.go2');
     Route::get('/landing/step2/{data}', [PageLanding::class, 'page2'])->name('landing.page2');
+    Route::get('/landing/{code}/go3', [PageLanding::class, 'go3'])->name('landing.go3');
+    Route::get('/landing/step3/{data}', [PageLanding::class, 'page3'])->name('landing.page3');
+
+    Route::get('/landing/wait/{data}', [PageLanding::class, 'wait'])->name('wait');
+    Route::get('/landing/redir/{data}', [PageLanding::class, 'redir'])->name('redir');
+
     
 
 

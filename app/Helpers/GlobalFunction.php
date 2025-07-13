@@ -33,3 +33,11 @@ if (!function_exists('link_landing_page')) {
             return $pages;
     }
 }
+if (!function_exists('time_landing_page')) {
+    function time_landing_page($link_id){
+            $link = link::where('id', $link_id)
+                ->first();
+            $time = $link->additional_data['time_in_level'] ?? 1;
+            return $time;
+    }
+}

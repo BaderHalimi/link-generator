@@ -1,63 +1,95 @@
-<div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg border-t-4 border-orange-500 space-y-6">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elegant Ad Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
 
-    <!-- عنوان -->
-    <h2 class="text-2xl font-bold text-orange-600 text-center">
-        إعلان حصري!
-    </h2>
+  <!-- الصفحة كاملة مقسومة -->
+  <div class="min-h-screen flex flex-col md:flex-row">
 
-    <!-- نص إعلاني -->
-    <p class="text-gray-700 text-center">
-        احصل على أفضل العروض الحصرية اليوم! لا تفوت الفرصة.
-    </p>
+    <!-- إعلان جانبي يسار -->
+    <aside class="hidden md:flex w-1/4 bg-orange-50 border-r border-orange-200 items-center justify-center p-4">
+      <div class="text-orange-700 text-center space-y-2">
+        <h3 class="font-bold text-lg">إعلان جانبي</h3>
+        <img src="https://via.placeholder.com/160x600?text=Ad+Left" alt="Ad Left" class="rounded shadow">
+        <p class="text-sm">أفضل العروض هنا</p>
+      </div>
+    </aside>
 
-    <!-- صورة إعلان أو بانر -->
-    <div class="overflow-hidden rounded-lg shadow-md">
-        <img src="https://via.placeholder.com/600x200?text=إعلان+هنا" alt="إعلان" class="w-full">
-    </div>
+    <!-- المحتوى الأساسي -->
+    <main class="flex-1 flex items-center justify-center p-4">
+      <div class="bg-white rounded-lg shadow-lg border-t-4 border-orange-500 max-w-xl w-full p-6 space-y-6">
 
-    <!-- تايمر عد تنازلي -->
-    <div class="flex items-center justify-center space-x-2 text-orange-600 text-3xl font-bold">
-        <span id="timer">10</span>
-        <span>ثواني متبقية</span>
-    </div>
+        <!-- عنوان -->
+        <h2 class="text-3xl font-bold text-orange-600 text-center">إعلان حصري!</h2>
 
-    <!-- زر متابعة أو تخطي -->
-    <div class="text-center">
-        <a href="{{ route('landing.go2', ['code' => $link->code]) }}">
-        
-        <button
-            id="skipButton"
-            disabled
-            class="bg-orange-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-orange-600 transition disabled:opacity-50"
-        >
-            تخطي الإعلان
-        </button></a>
-    </div>
+        <!-- نص -->
+        <p class="text-gray-700 text-center">استفد من عروضنا المميزة الآن، لا تضيع الفرصة!</p>
 
-    <!-- إعلان نصي إضافي -->
-    <div class="bg-orange-50 border border-orange-200 p-4 rounded-lg text-center text-orange-700">
-        إعلان إضافي: اكتشف أحدث منتجاتنا بأفضل الأسعار!
-    </div>
+        <!-- صورة بانر -->
+        <div class="overflow-hidden rounded-lg shadow-md">
+          <img src="https://via.placeholder.com/600x200?text=إعلان+هنا" alt="إعلان" class="w-full">
+        </div>
 
-</div>
+        <!-- المرحلة + زر -->
+        <div class="text-center space-y-2">
+          <div class="text-orange-600 font-semibold text-lg">
+            المرحلة: 1
+          </div>
+          <a href="{{ route('landing.go2', ['code' => $link->code]) }}">
+            <button
+              id="skipButton"
+              disabled
+              class="w-full bg-orange-500 text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-orange-600 transition disabled:opacity-50 cursor-not-allowed text-lg"
+            >
+              انتظر (<span id="timer">10</span> ثواني)
+            </button>
+          </a>
+        </div>
 
-<script>
+        <!-- إعلان نصي إضافي -->
+        <div class="bg-orange-50 border border-orange-200 p-4 rounded-lg text-center text-orange-700">
+          إعلان إضافي: اكتشف منتجاتنا الجديدة بأفضل الأسعار!
+        </div>
+
+      </div>
+    </main>
+
+    <!-- إعلان جانبي يمين -->
+    <aside class="hidden md:flex w-1/4 bg-orange-50 border-l border-orange-200 items-center justify-center p-4">
+      <div class="text-orange-700 text-center space-y-2">
+        <h3 class="font-bold text-lg">إعلان جانبي</h3>
+        <img src="https://via.placeholder.com/160x600?text=Ad+Right" alt="Ad Right" class="rounded shadow">
+        <p class="text-sm">فرص مميزة في انتظارك</p>
+      </div>
+    </aside>
+  </div>
+
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-        let timerElement = document.getElementById('timer');
-        let skipButton = document.getElementById('skipButton');
-        let countdown = 2;
+      let timerElement = document.getElementById('timer');
+      let skipButton = document.getElementById('skipButton');
+      let countdown = 10;
 
-        const interval = setInterval(() => {
-            countdown--;
-            timerElement.textContent = countdown;
+      const interval = setInterval(() => {
+        countdown--;
+        timerElement.textContent = countdown;
 
-            if (countdown <= 0) {
-                clearInterval(interval);
-                skipButton.disabled = false;
-                skipButton.textContent = "تابع الآن";
-                skipButton.classList.add('bg-green-500', 'hover:bg-green-600');
-                skipButton.classList.remove('bg-orange-500', 'hover:bg-orange-600');
-            }
-        }, 1000);
+        if (countdown <= 0) {
+          clearInterval(interval);
+          skipButton.disabled = false;
+          skipButton.textContent = "تابع الآن";
+          skipButton.classList.remove('cursor-not-allowed');
+          skipButton.classList.add('bg-green-500', 'hover:bg-green-600');
+          skipButton.classList.remove('bg-orange-500', 'hover:bg-orange-600');
+        }
+      }, 1000);
     });
-</script>
+  </script>
+
+</body>
+</html>

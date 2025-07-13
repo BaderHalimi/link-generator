@@ -56,7 +56,6 @@ class integrated_site_redir extends Controller
 
             ]);
         }
-        set_view($link->id, auth()->id() ?? null);
         //dd('This is a normal visitor, redirecting to the link...');
     
         // الزائر العادي - نحوله

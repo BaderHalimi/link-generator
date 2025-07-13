@@ -73,10 +73,10 @@
             </select>
         </label>
 
-        <label class="block">
+        {{-- <label class="block">
             <span class="text-orange-600 font-medium flex items-center gap-2"><i class="ri-calendar-line"></i> تاريخ الانتهاء</span>
             <input wire:model.defer="expire_date" type="date" class="mt-2 w-full rounded-xl border-orange-200 shadow focus:ring-orange-500 focus:border-orange-500 px-4 py-3 bg-white/40 backdrop-blur-lg" />
-        </label>
+        </label> --}}
     </div>
 
     <!-- الخطوة الثالثة -->
