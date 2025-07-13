@@ -52,7 +52,7 @@
 
                 <div class="mt-3 text-xs text-gray-400 flex flex-wrap items-center gap-4">
                     <span class="flex items-center gap-1"><i class="ri-calendar-line"></i> {{ $link->created_at->format('Y-m-d') }}</span>
-                    <span class="flex items-center gap-1"><i class="ri-eye-line"></i> {{ $link->visits_count }} زيارة</span>
+                    <span class="flex items-center gap-1"><i class="ri-eye-line"></i> {{ get_views($link->id) }} زيارة</span>
                 </div>
             </div>
 

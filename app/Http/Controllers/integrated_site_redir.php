@@ -56,21 +56,11 @@ class integrated_site_redir extends Controller
 
             ]);
         }
-        $view = new View();
-        $view->link_id = $link->id;
-        $view->ip_address = request()->header('CF-Connecting-IP') ?? request()->ip();
-        //$view->ip_address = request()->ip();
-        //dd(request()->headers->all());
-
-        $view->user_agent = request()->userAgent();
-        $view->additional_data= [
-            "country" => request()->header('CF-IPCountry') ?? 'Unknown',
-        ];
-        $view->save();
-        dd('This is a normal visitor, redirecting to the link...');
+        set_view($link->id, auth()->id() ?? null);
+        //dd('This is a normal visitor, redirecting to the link...');
     
         // الزائر العادي - نحوله
-        return redirect()->away($link->url);
+        return redirect()->route('landing', ['code' => $link->code]);
     }
     
     /**
