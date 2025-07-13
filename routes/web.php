@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\integrated_site_redir;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +22,7 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+    Route::get('/{code}', [integrated_site_redir::class, 'show']);
 
 require __DIR__.'/auth.php';

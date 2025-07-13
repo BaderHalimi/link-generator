@@ -17,7 +17,7 @@ class Links extends Component
     public function delete($linkId)
     {
         $link = link::find($linkId);
-        if ($link && $link->user_id === auth()->id()) {
+        if ($link & $link->user_id === auth()->id()) {
             $link->delete();
             $this->links = $this->links->where('id', '!=', $linkId);
             session()->flash('success', 'الرابط تم حذفه بنجاح!');
