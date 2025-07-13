@@ -13,10 +13,12 @@
         <div class="flex flex-1">
 
             <!-- Sidebar (aside) -->
-
+            <aside class="hidden md:flex flex-col w-64 bg-white shadow h-full">
+                @livewire('layout.aside')
+            </aside>
 
             <!-- Main Content -->
-            <main class="flex-1  bg-gray-100 min-h-screen">
+            <main class="flex-1 p-4 bg-gray-100 min-h-screen">
                 @yield('content')
             </main>
         </div>

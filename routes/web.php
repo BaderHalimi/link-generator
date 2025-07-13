@@ -32,11 +32,11 @@ Route::view('profile', 'profile')
     Route::get('/landing/wait/{data}', [PageLanding::class, 'wait'])->name('wait');
     Route::get('/landing/redir/{data}', [PageLanding::class, 'redir'])->name('redir');
 
-    
+    Route::get('/home', function(){ return view("welcome");})->name('welcome');
 
+    require __DIR__.'/auth.php';
 
 
 //last Route to handle link redirection
 Route::get('/{code}', [integrated_site_redir::class, 'show']);
 
-require __DIR__.'/auth.php';

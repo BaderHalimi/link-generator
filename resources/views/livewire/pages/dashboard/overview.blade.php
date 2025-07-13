@@ -21,7 +21,7 @@
                 <div class="flex items-center space-x-4 rtl:space-x-reverse">
                     <i class="ri-link text-3xl text-orange-500"></i>
                     <div>
-                        <h2 class="text-xl font-bold">1200 رابط مختصر</h2>
+                        <h2 class="text-xl font-bold">{{$links->count() ?? "--"}} رابط مختصر</h2>
                         <p class="text-gray-500">إجمالي الروابط</p>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="flex items-center space-x-4 rtl:space-x-reverse">
                     <i class="ri-bar-chart-2-line text-3xl text-orange-500"></i>
                     <div>
-                        <h2 class="text-xl font-bold">35000 نقرة</h2>
+                        <h2 class="text-xl font-bold">{{$views->count() ?? "--" }} نقرة</h2>
                         <p class="text-gray-500">إجمالي النقرات</p>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="flex items-center space-x-4 rtl:space-x-reverse">
                     <i class="ri-money-dollar-circle-line text-3xl text-orange-500"></i>
                     <div>
-                        <h2 class="text-xl font-bold">$1500</h2>
+                        <h2 class="text-xl font-bold">--</h2>
                         <p class="text-gray-500">إجمالي الأرباح</p>
                     </div>
                 </div>
@@ -60,24 +60,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="hover:bg-orange-50">
-                            <td class="px-4 py-2 border-b">https://example.com/very/long/link/1</td>
-                            <td class="px-4 py-2 border-b text-orange-600">https://sho.rt/abc123</td>
-                            <td class="px-4 py-2 border-b">120</td>
-                            <td class="px-4 py-2 border-b">2025-07-10</td>
-                        </tr>
-                        <tr class="hover:bg-orange-50">
-                            <td class="px-4 py-2 border-b">https://example.com/very/long/link/2</td>
-                            <td class="px-4 py-2 border-b text-orange-600">https://sho.rt/xyz456</td>
-                            <td class="px-4 py-2 border-b">85</td>
-                            <td class="px-4 py-2 border-b">2025-07-09</td>
-                        </tr>
-                        <tr class="hover:bg-orange-50">
-                            <td class="px-4 py-2">https://example.com/very/long/link/3</td>
-                            <td class="px-4 py-2 text-orange-600">https://sho.rt/lmn789</td>
-                            <td class="px-4 py-2">65</td>
-                            <td class="px-4 py-2">2025-07-08</td>
-                        </tr>
+                        <tbody>
+                            @if ($links->isEmpty())
+                                <tr>
+                                    <td colspan="4" class="text-center py-8 text-orange-500 bg-orange-50 border rounded-lg">
+                                        <div class="flex flex-col items-center space-y-2">
+                                            <i class="ri-link-unlink text-4xl"></i>
+                                            <p class="text-lg font-semibold">لا يوجد روابط حتى الآن</p>
+                                            <p class="text-sm text-gray-500">ابدأ بإضافة روابطك المختصرة لتظهر هنا.</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @else
+                                @foreach($links as $link)
+                                    <tr class="hover:bg-orange-50">
+                                        <td class="px-4 py-2 border-b truncate max-w-xs">{{ $link->url }}</td>
+                                        <td class="px-4 py-2 border-b text-orange-600">
+                                            {{ request()->getSchemeAndHttpHost() }}/{{ $link->code }}
+                                        </td>
+                                        <td class="px-4 py-2 border-b">{{ get_views($link->id) }}</td>
+                                        <td class="px-4 py-2 border-b">{{ $link->created_at->translatedFormat('d F Y') }}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                        
+
                     </tbody>
                 </table>
             </div>
