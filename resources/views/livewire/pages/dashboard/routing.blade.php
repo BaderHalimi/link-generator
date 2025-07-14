@@ -20,8 +20,12 @@
                 @livewire('pages.dashboard.settings')
                 @break
             @case(7)
-                @livewire('pages.dashboard.support')
+                <a id="redirectLink" href="{{ route('support.index') }}" wire:navigate class="hidden">Go</a>
+                <script>
+                    document.getElementById('redirectLink').click();
+                </script>
                 @break
+             
         @endswitch
     </div>
 </div>

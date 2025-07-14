@@ -53,7 +53,7 @@ $menuItems = [
     <nav class="flex-1 flex flex-col py-4" x-data="{ step: @entangle('currentRoute') }">
         @foreach ($menuItems as $step => $data)
         <a 
-        href="{{ url()->current() }}?step={{ $step }}"
+        href="{{ route('dashboard') }}?step={{ $step }}"
         wire:navigate
 
         class="{{ (request()->query('step', 1) == $step) ? 'bg-orange-600 text-white' : 'bg-orange-500 hover:bg-orange-600 text-white' }} flex items-center px-6 py-4 transition-colors duration-200"

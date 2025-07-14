@@ -33,10 +33,13 @@ Route::view('profile', 'profile')
     Route::get('/landing/redir/{data}', [PageLanding::class, 'redir'])->name('redir');
 
     Route::get('/home', function(){ return view("welcome");})->name('welcome');
-
+    Route::resource('support', 'App\Http\Controllers\Schats')
+        ->middleware(['auth', 'verified'])
+        ->names('support');
     require __DIR__.'/auth.php';
 
 
 //last Route to handle link redirection
-Route::get('/{code}', [integrated_site_redir::class, 'show']);
-
+Route::middleware('throttle:30,1')->group(function () {
+    Route::get('/{code}', [integrated_site_redir::class, 'show']);
+});
