@@ -21,7 +21,12 @@ new #[Layout('layouts.guest')] class extends Component
      * Handle an incoming registration request.
      */
     public function mount(){
-        $this->plan = request()->query('plan');
+        if (request()->query('plan')) {
+            $this->plan = request()->query('plan');
+
+        }else {
+            $this->plan = 'free'; 
+        }
 
     }
     public function register(): void
