@@ -16,7 +16,7 @@ class Schats extends Controller
             ->paginate(10);
 
         return view('support.tickets', compact('schats'));
-        
+
     }
 
     /**
@@ -49,7 +49,7 @@ class Schats extends Controller
 
         ]);
 
-        return redirect()->back()
+        return redirect()->route('support.index')
             ->with('success', 'Support ticket created successfully.');
     }
 

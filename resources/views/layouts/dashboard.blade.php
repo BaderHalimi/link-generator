@@ -24,6 +24,27 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('scripts')
+    @if(session()->has('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'نجاح',
+            text: "{{ session('success') }}",
+            confirmButtonText: 'حسناً'
+        });
+    </script>
+    @elseif(session()->has('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'خطأ',
+            text: "{{ session('error') }}",
+            confirmButtonText: 'حسناً'
+        });
+    </script>
+    @endif
+
 </body>
 @endsection
