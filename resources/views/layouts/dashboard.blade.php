@@ -1,13 +1,12 @@
 @extends('layouts.head')
 @section('layout')
 
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased h-screen overflow-hidden bg-gray-100">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <div class="min-h-screen flex flex-col">
         <!-- Navbar -->
-        @livewire('front.header')
 
         <!-- Sidebar + Main Content -->
         <div class="flex flex-1">
@@ -18,7 +17,7 @@
             </aside>
 
             <!-- Main Content -->
-            <main class="flex-1 p-4 bg-gray-100 min-h-screen">
+            <main class="flex-1 p-4 bg-gray-100 min-h-screen overflow-y-scroll">
                 @yield('content')
             </main>
         </div>
