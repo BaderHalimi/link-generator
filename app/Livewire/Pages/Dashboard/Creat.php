@@ -4,9 +4,11 @@ namespace App\Livewire\Pages\Dashboard;
 
 use Livewire\Component;
 use App\Models\link;
+use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
 
 use Illuminate\Support\Str;
+
 class Creat extends Component
 {
     use WithFileUploads;
@@ -50,7 +52,6 @@ class Creat extends Component
             return;
         }
         $this->code = substr(Str::uuid()->toString(), 0, 8);
-
     }
     public function submit()
     {
@@ -64,7 +65,7 @@ class Creat extends Component
         //dd($this->queryString, $this->link_id);
         if ($this->link_id) {
             $this->link = link::find($this->link_id);
-            if ($this->link && $this->link->user_id === auth()->id()) {
+            if ($this->link && $this->link->user_id == Auth::id()) {
                 $this->code = $this->link->code;
                 $this->url = $this->link->url;
                 $this->image = $this->link->image;
@@ -75,10 +76,10 @@ class Creat extends Component
                 $this->expire_date = $this->link->additional_data['expire_date'] ?? '';
             } else {
                 session()->flash('error', 'الرابط غير موجود أو ليس لديك صلاحية للوصول إليه.');
-                return redirect()->route('dashboard.links');
+                $this->dispatch('changeRoute', 3);
+                return;
             }
-        }
-        else {
+        } else {
             $this->gen_code();
             $this->link = new link();
             $this->currentStep = 1;
@@ -96,18 +97,20 @@ class Creat extends Component
             $this->additional_data = [];
         }
     }
-    public function create(){
-        
-        
+    public function create()
+    {
+
+
 
         $this->store();
     }
-    public function store(){
+    public function store()
+    {
 
-        if ($this->image){
+        if ($this->image instanceof \Illuminate\Http\UploadedFile) {
             $this->image = $this->image->store('links', 'public');
-
         }
+
         $this->link->code = $this->code;
         $this->link->user_id = auth()->id();
         $this->link->url = $this->url;

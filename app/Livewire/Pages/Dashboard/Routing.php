@@ -15,7 +15,13 @@ class Routing extends Component
     {
         $this->currentRoute = request()->query('step', 1);
     }
-    
+
+    #[On('changeRoute')]
+    public function changeRoute($route)
+    {
+        return redirect()->route('dashboard', ['step' => $route]);
+        // $this->currentRoute = $route;
+    }
 
     public function render()
     {

@@ -25,7 +25,7 @@
                     document.getElementById('redirectLink').click();
                 </script>
                 @break
-             
+
         @endswitch
     </div>
 </div>
